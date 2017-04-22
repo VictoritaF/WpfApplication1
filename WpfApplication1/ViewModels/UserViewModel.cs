@@ -3,36 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
 using System.Windows;
+using System.Collections.ObjectModel;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 
 namespace WpfApplication1.ViewModels
 {
-   internal class UserViewModel
+    internal class UserViewModel
     {
+
+        public ObservableCollection<string> Images { get; set; }
+
+        public ObservableCollection<User> Users { get; set; }
+
+
+
         public UserViewModel()
         {
-             user = new User("David", "");
-           
+            setImageList();
+            setUserList();
+            setImageBox();
         }
-        private User user;
-        public User User
-        {
-            get
-            {
 
-                return user;
-            }          
-        }
 
         public void setUserList()
         {
-            List<User> users = new List<User>();
-            users.Add(new User("David", ""));
-            users.Add(new User("Maria", ""));
+            Users = new ObservableCollection<User>();
+            Users.Add(new User("Ana", Images[0]));
+            Users.Add(new User("Mircea", Images[1]));
+            Users.Add(new User("Andreea", Images[2]));
+            Users.Add(new User("Alexandru", Images[3]));
+
         }
-        private void ShiftRightButton_Click(object sender, RoutedEventArgs e)
+
+        public void setImageList()
         {
-            setUserList();
+            Images = new ObservableCollection<string>();
+            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Ana_Sun.jpg");
+            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Mircea_Bear.jpg");
+            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Andreea_Flower.jpg");
+            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Alexandru_Rabbit.jpg");
+
         }
+
+        public string DisplayedImage => Images[0];
+        public void setImageBox()
+        {
+            Image images = new Image();
+            ImageSource imageSource = new BitmapImage(new Uri(Images[0]));
+            images.Source = imageSource;
+
+
+        }
+
+
+
+
         //public string[] ReadFromFile()
         //{
         //    string[] lines = System.IO.File.ReadAllLines(@"D:\Facultate\an2\sem2\MVP\Tema2\Users.txt");
