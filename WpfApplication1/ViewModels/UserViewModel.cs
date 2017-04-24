@@ -7,72 +7,151 @@ using System.Collections.ObjectModel;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
+using System.Diagnostics;
+using WpfApplication1.ViewModels.Commands;
+using System.Runtime.CompilerServices;
 
 namespace WpfApplication1.ViewModels
 {
-    internal class UserViewModel
+    public class UserViewModel : INotifyPropertyChanged
     {
-
-        public ObservableCollection<string> Images { get; set; }
-
-        public ObservableCollection<User> Users { get; set; }
-
-
-
         public UserViewModel()
         {
-            setImageList();
             setUserList();
-            setImageBox();
+            SelectedItem = Users[0];
+            setSelectedItemImage(SelectedItem.image);
+            AddNewUserCommand = new AddNewUserCommand(this);
+            NextUserCommand = new SelectNextUserCommand(this);
+            PreviousUserCommand = new SelectPreviousUserCommand(this);
+            DeleteUserCommand = new DeleteUserCommand(this);
+            CancelWindowCommand = new CancelMainWindowCommand(this);
+
         }
 
+        private ObservableCollection<User> users { get; set; }
+
+        public ObservableCollection<User> Users
+        {
+            get { return users; }
+            set { users = value; }
+        }
 
         public void setUserList()
         {
             Users = new ObservableCollection<User>();
-            Users.Add(new User("Ana", Images[0]));
-            Users.Add(new User("Mircea", Images[1]));
-            Users.Add(new User("Andreea", Images[2]));
-            Users.Add(new User("Alexandru", Images[3]));
-
+            Users.Add(new User() { name = "Ana", image = "D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Ana_Sun.jpg" });
+            Users.Add(new User() { name = "Mircea", image = "D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Mircea_Bear.jpg" });
+            Users.Add(new User() { name = "Andreea", image = "D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Andreea_Flower.jpg" });
+            Users.Add(new User() { name = "Alexandru", image = "D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Alexandru_Rabbit.jpg" });
+            Users.Add(new User() { name = "Alina", image = "D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Andreea_Flower.jpg" });
         }
 
-        public void setImageList()
+        private User selectedItem { get; set; }
+        public User SelectedItem
         {
-            Images = new ObservableCollection<string>();
-            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Ana_Sun.jpg");
-            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Mircea_Bear.jpg");
-            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Andreea_Flower.jpg");
-            Images.Add("D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Alexandru_Rabbit.jpg");
+            get { return selectedItem; }
+            set
+            {
+                if (value == selectedItem)
+                    return;
 
+                selectedItem = value;
+                setSelectedItemImage(SelectedItem.image);
+                OnPropertyChanged("SelectedItem");
+            }
         }
 
-        public string DisplayedImage => Images[0];
-        public void setImageBox()
+        private string selectedItemImage { get; set; }
+        public string SelectedItemImage
         {
-            Image images = new Image();
-            ImageSource imageSource = new BitmapImage(new Uri(Images[0]));
-            images.Source = imageSource;
+            get { return selectedItemImage; }
+            set
+            {
+                if (value == selectedItemImage)
+                    return;
 
+                selectedItemImage = value;
+                OnPropertyChanged("SelectedItemImage");
 
+            }
         }
 
+        private void setSelectedItemImage(string imagePath)
+        {
+            SelectedItemImage = imagePath;
+        }
 
+        public AddNewUserCommand AddNewUserCommand { get; set; }
+        public SelectNextUserCommand NextUserCommand { get; set; }
+        public SelectPreviousUserCommand PreviousUserCommand { get; set; }
+        public DeleteUserCommand DeleteUserCommand { get; set; }
+        public CancelMainWindowCommand CancelWindowCommand { get; set; }
 
+        public string NewUserName { get; set; }
 
-        //public string[] ReadFromFile()
+        public void AddNewUser()
+        {
+            Users.Add(new User() { name = NewUserName, image = SelectedItemImage });
+        }
+
+        public void SelectPreviousUser()
+        {
+            int currentPosition = Users.IndexOf(SelectedItem);
+            if (currentPosition > 0)
+            {
+                currentPosition--;
+            }
+            else
+            {
+                currentPosition = Users.Count() - 1;
+            }
+            SelectedItem = Users[currentPosition];
+        }
+
+        public void SelectNextUser()
+        {
+            int currentPosition = Users.IndexOf(SelectedItem);
+            if (currentPosition < Users.Count() - 1)
+            {
+                currentPosition++;
+            }
+            else
+            {
+                currentPosition = 0;
+            }
+            SelectedItem = Users[currentPosition];
+        }
+
+        public void DeleteUser()
+        {
+            User selectedUser = SelectedItem;
+            SelectedItem = Users[Users.IndexOf(SelectedItem) - 1];
+            Users.Remove(selectedUser);
+           
+            
+        }
+
+        public void CancelMainWindow()
+        {
+            Application.Current.MainWindow.Close();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        //public void setImageBox()
         //{
-        //    string[] lines = System.IO.File.ReadAllLines(@"D:\Facultate\an2\sem2\MVP\Tema2\Users.txt");
-        //    foreach (string line in lines)
-        //    {
-        //        string[] token = line.Split(';');
-        //        userListBox.Items.Add(token[0]);
+        //    Image images = new Image();
+        //    ImageSource imageSource = new BitmapImage(new Uri(Images[0]));
+        //    images.Source = imageSource;
 
-        //        ImageSource imageSource = new BitmapImage(new Uri(token[1]));
-        //        images.Source = imageSource;
-        //    }
-        //    return lines;
         //}
-
     }
 }

@@ -5,31 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
+        xmlns:vm="clr-namespace:WpfApplication1.ViewModels"
         Title="Sign In" Height="600" Width="700">
+    <!--<Window.Resources>
+        <vm:UserViewModel x:Key="viewModel"/>
+    </Window.Resources>-->
+    <Window.DataContext>
+        <vm:UserViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="692" RenderTransformOrigin="0.718,0.385">
-            <ListBox x:Name="userListBox"  HorizontalAlignment="Left" Height="335" Margin="29,89,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.562,0.502" ItemsSource="{Binding Users}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="158*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="userListBox" HorizontalAlignment="Left" Height="271" Margin="32,94,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.562,0.502" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedItem}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>
                     </DataTemplate>
-                </ListBox.ItemTemplate> 
+                </ListBox.ItemTemplate>
             </ListBox>
 
-            <Image x:Name="images"  HorizontalAlignment="Left" Height="248" Margin="327,94,0,0" VerticalAlignment="Top" Width="325" MouseDown="images_MouseDown">
-                <Image.Source>
-                    <BitmapImage UriSource="D:/Facultate/an2/sem2/MVP/Tema2/UserImages/Ana_Sun.jpg"></BitmapImage>
-                </Image.Source>
+            <Image x:Name="images" Source="{Binding SelectedItemImage}" HorizontalAlignment="Left" Height="248" Margin="327,94,0,0" VerticalAlignment="Top" Width="325" Grid.ColumnSpan="2" >
             </Image>
-           
-            <Button x:Name="ShiftLeftButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="352,374,0,0" VerticalAlignment="Top" Width="110" Height="38" Click="ShiftLeftButton_Click"/>
-            <Button x:Name="ShiftRightButton" Command="" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="526,374,0,0" VerticalAlignment="Top" Width="108" Height="38" Click="ShiftRightButton_Click"/>
+
+            <Button x:Name="ShiftLeftButton" Command="{Binding PreviousUserCommand}" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="352,407,0,0" VerticalAlignment="Top" Width="110" Height="38"/>
+            <Button x:Name="ShiftRightButton" Command="{Binding NextUserCommand}" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="518,407,0,0" VerticalAlignment="Top" Width="108" Height="38" />
             <Label x:Name="label" Content="Welcome to Hangman! Enjoy this game!" HorizontalAlignment="Left" Margin="110,31,0,0" VerticalAlignment="Top" Width="446" FontSize="24"/>
-            <Button x:Name="button" Content="Cancel" HorizontalAlignment="Left" Margin="544,489,0,0" VerticalAlignment="Top" Width="108" Height="44"/>
+            <Button x:Name="button" Command="{Binding CancelWindowCommand}" Content="Cancel" HorizontalAlignment="Left" Margin="544,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Grid.ColumnSpan="2"/>
             <Button x:Name="button_Copy" Content="Play" HorizontalAlignment="Left" Margin="376,489,0,0" VerticalAlignment="Top" Width="108" Height="44"/>
-            <Button x:Name="button_Copy1" Content="Delete User" HorizontalAlignment="Left" Margin="196,489,0,0" VerticalAlignment="Top" Width="108
+            <Button x:Name="button_Copy1" Command="{Binding DeleteUserCommand}" Content="Delete User" HorizontalAlignment="Left" Margin="196,489,0,0" VerticalAlignment="Top" Width="108
                     " Height="44"/>
-            <Button x:Name="button_Copy2" Content="New User" HorizontalAlignment="Left" Margin="32,489,0,0" VerticalAlignment="Top" Width="108" Height="44"/>
+            <Button x:Name="button_Copy2" Content="New User" HorizontalAlignment="Left" Margin="32,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Command="{Binding AddNewUserCommand}"/>
+            <TextBox Name="newUserTextbox" Text="{Binding NewUserName}" HorizontalAlignment="Left" Height="34" Margin="169,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.484,0.459"/>
+            <Label Content="NewUser name:" HorizontalAlignment="Left" Margin="32,413,0,0" VerticalAlignment="Top" Height="34" Width="108"/>
         </Grid>
 
     </Grid>

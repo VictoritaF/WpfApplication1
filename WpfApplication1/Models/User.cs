@@ -7,14 +7,13 @@ using System.ComponentModel;
 
 namespace WpfApplication1
 {
-    class User: INotifyPropertyChanged
+    public class User: INotifyPropertyChanged
     {
         private string Name;
         private string Image;
-        public User(String Username, String UserImage)
+        public User()
         {
-            name = Username;
-            image = UserImage;
+            
         }
 
         public string name
@@ -49,9 +48,10 @@ namespace WpfApplication1
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 

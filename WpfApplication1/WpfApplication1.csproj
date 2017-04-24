@@ -56,6 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\Commands\CancelMainWindowCommand.cs" />
+    <Compile Include="ViewModels\Commands\DeleteUserCommand.cs" />
+    <Compile Include="ViewModels\Commands\SelectNextUserCommand.cs" />
+    <Compile Include="ViewModels\Commands\SelectPreviousUserCommand.cs" />
+    <Compile Include="View\NewGameWindow.xaml.cs">
+      <DependentUpon>NewGameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlayWindow.xaml.cs">
+      <DependentUpon>PlayWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,12 +74,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\Commands\SimpleCommand.cs" />
+    <Compile Include="ViewModels\Commands\AddNewUserCommand.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\NewGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

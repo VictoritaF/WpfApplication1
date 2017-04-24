@@ -7,10 +7,13 @@ using System.Windows.Input;
 
 namespace WpfApplication1.ViewModels.Commands
 {
-    public class SimpleCommand : ICommand
+    public class SelectPreviousUserCommand : ICommand
     {
-        public SimpleCommand()
+        public UserViewModel ViewModel { get; set; }
+
+        public SelectPreviousUserCommand(UserViewModel viewModel)
         {
+            this.ViewModel = viewModel;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -22,7 +25,7 @@ namespace WpfApplication1.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            this.ViewModel.SelectPreviousUser();
         }
     }
 }

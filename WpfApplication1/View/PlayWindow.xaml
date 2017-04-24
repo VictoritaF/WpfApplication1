@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApplication1.View.PlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1.View"
+        mc:Ignorable="d"
+        Title="PlayWindow" Height="300" Width="300">
+    <Grid Background="#FF9C9CBE">
+        <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="292" Background="#FF2A7BA9">
+            <MenuItem Header="File" Width="29" BorderBrush="#00000000" Background="#FF2A7BA9">
+                <MenuItem x:Name="NewGame" Header="New game" Margin="0,0,-35,0" ></MenuItem>
+                <MenuItem x:Name="OpenGame" Header="Open Game" ></MenuItem>
+                <MenuItem x:Name="SaveGame" Header="Save Game" ></MenuItem>
+                <MenuItem x:Name="GameStatistics" Header="Statistics" ></MenuItem>
+                <Separator />
+                <MenuItem x:Name="GameExit" Header="Exit" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Categories">
+                <MenuItem x:Name="AllCategories" Header="All Categories" IsCheckable="True" IsChecked="True"></MenuItem>
+                <MenuItem x:Name="StatesCategory" Header="States" IsCheckable="True"></MenuItem>
+                <MenuItem x:Name="RiversCategory" Header="Rivers" IsCheckable="True"></MenuItem>
+                <MenuItem x:Name="SeasCategory" Header="Seas" IsCheckable="True"></MenuItem>
+
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem x:Name="HelpAbout" Header="About"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Label Content="Start your Game!" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Height="67" Width="171" FontSize="22"/>
+
+
+    </Grid>
+</Window>
