@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:WpfApplication1.ViewModels"
-        Title="Sign In" Height="600" Width="700">
+        Title="Sign In" Height="600" Width="700"  HorizontalAlignment="Left" VerticalAlignment="Top" >
     <!--<Window.Resources>
         <vm:UserViewModel x:Key="viewModel"/>
     </Window.Resources>-->
@@ -34,7 +34,7 @@
             <Button x:Name="ShiftRightButton" Command="{Binding NextUserCommand}" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="518,407,0,0" VerticalAlignment="Top" Width="108" Height="38" />
             <Label x:Name="label" Content="Welcome to Hangman! Enjoy this game!" HorizontalAlignment="Left" Margin="110,31,0,0" VerticalAlignment="Top" Width="446" FontSize="24"/>
             <Button x:Name="button" Command="{Binding CancelWindowCommand}" Content="Cancel" HorizontalAlignment="Left" Margin="544,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Grid.ColumnSpan="2"/>
-            <Button x:Name="button_Copy" Content="Play" HorizontalAlignment="Left" Margin="376,489,0,0" VerticalAlignment="Top" Width="108" Height="44"/>
+            <Button x:Name="button_Copy"  Content="Play" HorizontalAlignment="Left" Margin="376,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Click="button_Play_Click"/>
             <Button x:Name="button_Copy1" Command="{Binding DeleteUserCommand}" Content="Delete User" HorizontalAlignment="Left" Margin="196,489,0,0" VerticalAlignment="Top" Width="108
                     " Height="44"/>
             <Button x:Name="button_Copy2" Content="New User" HorizontalAlignment="Left" Margin="32,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Command="{Binding AddNewUserCommand}"/>

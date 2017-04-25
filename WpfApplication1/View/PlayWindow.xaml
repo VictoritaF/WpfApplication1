@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.View"
         mc:Ignorable="d"
-        Title="PlayWindow" Height="300" Width="300">
-    <Grid Background="#FF9C9CBE">
-        <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="292" Background="#FF2A7BA9">
-            <MenuItem Header="File" Width="29" BorderBrush="#00000000" Background="#FF2A7BA9">
+        Title="PlayWindow" Height="569" Width="692" HorizontalAlignment="Left" VerticalAlignment="Top" >
+    <Grid Background="#FF9C9CBE" Height="569" Width="692" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Menu HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="692" Background="#FF2A7BA9" FontSize="22">
+            <MenuItem Header="File" Width="56" BorderBrush="#00000000" Background="#FF2A7BA9" Height="48">
                 <MenuItem x:Name="NewGame" Header="New game" Margin="0,0,-35,0" ></MenuItem>
                 <MenuItem x:Name="OpenGame" Header="Open Game" ></MenuItem>
                 <MenuItem x:Name="SaveGame" Header="Save Game" ></MenuItem>
@@ -16,7 +16,7 @@
                 <Separator />
                 <MenuItem x:Name="GameExit" Header="Exit" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Categories">
+            <MenuItem Header="Categories" Width="140">
                 <MenuItem x:Name="AllCategories" Header="All Categories" IsCheckable="True" IsChecked="True"></MenuItem>
                 <MenuItem x:Name="StatesCategory" Header="States" IsCheckable="True"></MenuItem>
                 <MenuItem x:Name="RiversCategory" Header="Rivers" IsCheckable="True"></MenuItem>
@@ -27,7 +27,7 @@
                 <MenuItem x:Name="HelpAbout" Header="About"></MenuItem>
             </MenuItem>
         </Menu>
-        <Label Content="Start your Game!" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Height="67" Width="171" FontSize="22"/>
+        <Label Content="Choose your option!" HorizontalAlignment="Left" Margin="62,184,0,0" VerticalAlignment="Top" Height="116" Width="598" FontSize="60"/>
 
 
     </Grid>

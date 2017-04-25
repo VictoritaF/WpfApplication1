@@ -6,6 +6,7 @@ using System.Windows.Media.Imaging;
 using System.ComponentModel;
 using WpfApplication1.ViewModels;
 using System.Diagnostics;
+using WpfApplication1.View;
 
 namespace WpfApplication1
 {
@@ -18,6 +19,13 @@ namespace WpfApplication1
         {
             InitializeComponent();
             //DataContext = new UserViewModel();
+        }
+
+        private void button_Play_Click(object sender, RoutedEventArgs e)
+        {
+            PlayWindow playWindow = new PlayWindow();
+            playWindow.Show();
+            this.Close();
         }
     }
 }

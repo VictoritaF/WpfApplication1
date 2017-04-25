@@ -58,6 +58,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\Commands\CancelMainWindowCommand.cs" />
     <Compile Include="ViewModels\Commands\DeleteUserCommand.cs" />
+    <Compile Include="ViewModels\Commands\PlayCommand.cs" />
     <Compile Include="ViewModels\Commands\SelectNextUserCommand.cs" />
     <Compile Include="ViewModels\Commands\SelectPreviousUserCommand.cs" />
     <Compile Include="View\NewGameWindow.xaml.cs">

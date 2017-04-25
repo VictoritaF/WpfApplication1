@@ -25,6 +25,7 @@ namespace WpfApplication1.ViewModels
             PreviousUserCommand = new SelectPreviousUserCommand(this);
             DeleteUserCommand = new DeleteUserCommand(this);
             CancelWindowCommand = new CancelMainWindowCommand(this);
+            OpenWindowOnPlayCommand = new PlayCommand(this);
 
         }
 
@@ -86,6 +87,7 @@ namespace WpfApplication1.ViewModels
         public SelectPreviousUserCommand PreviousUserCommand { get; set; }
         public DeleteUserCommand DeleteUserCommand { get; set; }
         public CancelMainWindowCommand CancelWindowCommand { get; set; }
+        public PlayCommand OpenWindowOnPlayCommand { get; set; }
 
         public string NewUserName { get; set; }
 
@@ -127,13 +129,18 @@ namespace WpfApplication1.ViewModels
             User selectedUser = SelectedItem;
             SelectedItem = Users[Users.IndexOf(SelectedItem) - 1];
             Users.Remove(selectedUser);
-           
-            
+
+
         }
 
         public void CancelMainWindow()
         {
             Application.Current.MainWindow.Close();
+        }
+
+        public void OpenWindowOnPlay()
+        {
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
