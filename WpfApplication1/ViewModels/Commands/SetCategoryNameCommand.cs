@@ -7,15 +7,16 @@ using System.Windows.Input;
 
 namespace WpfApplication1.ViewModels.Commands
 {
-    public class DeleteUserCommand:ICommand
+   public class SetCategoryNameCommand:ICommand
     {
         public UserViewModel ViewModel { get; set; }
 
-        public DeleteUserCommand(UserViewModel viewModel)
+        public SetCategoryNameCommand(UserViewModel viewModel)
         {
             this.ViewModel = viewModel;
         }
-        public DeleteUserCommand() { }
+        public SetCategoryNameCommand() { }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -25,7 +26,7 @@ namespace WpfApplication1.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            this.ViewModel.DeleteUser();
+            this.ViewModel.SetCategoryName(parameter);
         }
     }
 }

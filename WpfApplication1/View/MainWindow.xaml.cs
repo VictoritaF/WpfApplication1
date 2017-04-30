@@ -7,6 +7,7 @@ using System.ComponentModel;
 using WpfApplication1.ViewModels;
 using System.Diagnostics;
 using WpfApplication1.View;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -26,6 +27,13 @@ namespace WpfApplication1
             PlayWindow playWindow = new PlayWindow();
             playWindow.Show();
             this.Close();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SerializationActions actions = new SerializationActions();
+            actions.SerializeObject("test.xml", DataContext as UserViewModel);
+            MessageBox.Show("Serializare efectuata cu succes!");
         }
     }
 }

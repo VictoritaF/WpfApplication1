@@ -9,7 +9,7 @@
     <Grid Background="#FF9C9CBE" Height="569" Width="692" HorizontalAlignment="Left" VerticalAlignment="Top" >
         <Menu HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="692" Background="#FF2A7BA9" FontSize="22">
             <MenuItem Header="File" Width="56" BorderBrush="#00000000" Background="#FF2A7BA9" Height="48">
-                <MenuItem x:Name="NewGame" Header="New game" Margin="0,0,-35,0" ></MenuItem>
+                <MenuItem x:Name="NewGame" Header="New game" Margin="0,0,-35,0" Click="NewGame_Click"></MenuItem>
                 <MenuItem x:Name="OpenGame" Header="Open Game" ></MenuItem>
                 <MenuItem x:Name="SaveGame" Header="Save Game" ></MenuItem>
                 <MenuItem x:Name="GameStatistics" Header="Statistics" ></MenuItem>

@@ -23,5 +23,11 @@ namespace WpfApplication1.View
         {
             InitializeComponent();
         }
+
+        private void NewGame_Click(object sender, RoutedEventArgs e)
+        {
+            NewGameWindow newGameWindow = new NewGameWindow();
+            newGameWindow.Show();
+        }
     }
 }

@@ -4,18 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace WpfApplication1
 {
+    [Serializable]
     public class User: INotifyPropertyChanged
     {
-        private string Name;
-        private string Image;
+        
+       
         public User()
         {
             
         }
 
+        [XmlAttribute]
+        private string Name;
         public string name
         {
             get
@@ -29,6 +33,8 @@ namespace WpfApplication1
             }
         }
 
+        [XmlAttribute]
+        private string Image;
         public string image
         {
             get

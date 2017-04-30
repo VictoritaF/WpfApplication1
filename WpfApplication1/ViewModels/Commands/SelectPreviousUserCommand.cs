@@ -15,6 +15,7 @@ namespace WpfApplication1.ViewModels.Commands
         {
             this.ViewModel = viewModel;
         }
+        public SelectPreviousUserCommand() { }
 
         public event EventHandler CanExecuteChanged;
 

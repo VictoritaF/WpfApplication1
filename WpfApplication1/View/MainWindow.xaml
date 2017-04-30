@@ -40,6 +40,11 @@
             <Button x:Name="button_Copy2" Content="New User" HorizontalAlignment="Left" Margin="32,489,0,0" VerticalAlignment="Top" Width="108" Height="44" Command="{Binding AddNewUserCommand}"/>
             <TextBox Name="newUserTextbox" Text="{Binding NewUserName}" HorizontalAlignment="Left" Height="34" Margin="169,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.484,0.459"/>
             <Label Content="NewUser name:" HorizontalAlignment="Left" Margin="32,413,0,0" VerticalAlignment="Top" Height="34" Width="108"/>
+            <Menu HorizontalAlignment="Right" Height="31" VerticalAlignment="Top" Width="682" Grid.ColumnSpan="2" Margin="0,0,10,0">
+                <MenuItem Header="File" Height="31" Width="56">
+                    <MenuItem Header="Save" Click="MenuItem_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
         </Grid>
 
     </Grid>

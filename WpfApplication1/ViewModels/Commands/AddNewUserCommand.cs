@@ -15,6 +15,8 @@ namespace WpfApplication1.ViewModels.Commands
         {
             this.ViewModel = viewModel;
         }
+        public AddNewUserCommand()
+        { }
 
         public event EventHandler CanExecuteChanged;
 
