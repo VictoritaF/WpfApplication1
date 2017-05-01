@@ -133,18 +133,35 @@ namespace WpfApplication1.View
             word = GetRandomWord();
             MessageBox.Show(word);
             char[] chars = word.ToCharArray();
-            int between = 350 / chars.Length - 1;
+            int between = 413 / chars.Length - 1;
             for (int i = 0; i < chars.Length; i++)
             {
-
-                labels.Add(new Label());
-                labels[i].Content = "_";
-                int n = (i * between) + 10;
-                labels[i].Height = 16;
-                labels[i].Width = 15;
-                labels[i].Padding = new Thickness(5, 0, 0, 0);
-                labels[i].Margin = new Thickness(n, 220, 0, 0);
-                Grid.Children.Add(labels[i]);
+                if (chars[i] != ' ')
+                {
+                    labels.Add(new Label());
+                    labels[i].Content = "_";
+                    int n = (i * between) + 15;
+                    labels[i].Height = 32;
+                    labels[i].Width = 32;
+                    labels[i].VerticalAlignment = VerticalAlignment.Top;
+                    labels[i].FontSize = 22;
+                    labels[i].Padding = new Thickness(14, 0, 0, 0);
+                    labels[i].Margin = new Thickness(n, 420, 0, 0);
+                    Grid.Children.Add(labels[i]);
+                }
+                else if (chars[i] == ' ')
+                {
+                    labels.Add(new Label());
+                    labels[i].Content = " ";
+                    int n = (i * between) + 15;
+                    labels[i].Height = 32;
+                    labels[i].Width = 32;
+                    labels[i].VerticalAlignment = VerticalAlignment.Top;
+                    labels[i].FontSize = 22;
+                    labels[i].Padding = new Thickness(14, 0, 0, 0);
+                    labels[i].Margin = new Thickness(n, 420, 0, 0);
+                    Grid.Children.Add(labels[i]);
+                }
 
             }
         }
